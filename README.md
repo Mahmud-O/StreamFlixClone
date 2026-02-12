@@ -20,7 +20,7 @@ Streamflix is a modern Netflix clone built with React and Vite, featuring authen
 -   Vite
 -   Supabase (authentication & backend)
 -   TMDB API (movie data)
--   CSS Modules
+-   Tailwind CSS
 -   Sonner (UI notifications)
 
 ## Getting Started
