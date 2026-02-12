@@ -6,3 +6,10 @@
   from = "/*"
   to = "/index.html"
   status = 200
+ 
+[functions]
+  directory = "netlify/functions"
+
+[[scheduled.functions]]
+  name = "keep-supabase-alive"
+  schedule = "0 0 * * 0"

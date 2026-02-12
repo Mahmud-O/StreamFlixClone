@@ -11,21 +11,31 @@ export function MyListProvider({ children }) {
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        if (user) {
-            fetchMyList()
-        } else {
-            setMyList([])
-            setLoading(false)
+        let alive = true
+
+        const run = async () => {
+            if (user) {
+                await fetchMyList(alive)
+            } else {
+                setMyList([])
+                setLoading(false)
+            }
+        }
+
+        run()
+
+        return () => {
+            alive = false
         }
     }, [user])
 
-    const fetchMyList = async () => {
+    const fetchMyList = async (alive = true) => {
         if (!user) return
         setLoading(true)
 
         const { data, error } = await supabase
             .from('my_list')
-            .select('*')
+            .select('id, tmdb_id, type')
             .eq('user_id', user.id)
 
         if (error) {
@@ -51,6 +61,7 @@ export function MyListProvider({ children }) {
             })
         )
 
+        if (!alive) return
         setMyList(detailedList)
         setLoading(false)
     }
