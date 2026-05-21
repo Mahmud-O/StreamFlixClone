@@ -29,7 +29,7 @@ StreamFlixClone is a React + Vite streaming UI built around:
 - `src/CustomHooks` — context hooks
 - `src/services` — TMDB API helpers
 - `src/assets` — images and icons
-- `src/netlify/functions` — Netlify functions
+- `src/netlify/functions` — Netlify function source in this repo
 
 ## App flow
 
@@ -86,6 +86,7 @@ Required environment variables:
 - The published directory is `dist`
 - SPA routing is handled by a rewrite to `index.html`
 - There is a scheduled Netlify function to keep Supabase alive
+- Keep the function path and `netlify.toml` config in sync if you move it
 
 ## When making changes
 
